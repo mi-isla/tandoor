@@ -42,10 +42,10 @@ def get_theming_values(request):
         'custom_theme': None,
         'theme': static(themes[UserPreference.TANDOOR]),
         'nav_logo': static('assets/brand_logo.png'),
-        'nav_bg_color': '#ddbf86',
+        'nav_bg_color': '#1B3D36',
         'nav_text_class': 'navbar-light',
         'sticky_nav': 'position: sticky; top: 0; left: 0; z-index: 1000;',
-        'app_name': 'Tandoor Recipes',
+        'app_name': 'Cushina',
     }
 
     if request.user.is_authenticated:

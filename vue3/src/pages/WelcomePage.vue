@@ -17,7 +17,7 @@
             <v-stepper-window>
                 <v-stepper-window-item value="1">
                     <v-card flat>
-                        <v-card-title class="text-h4">{{ $t('WelcometoTandoor') }} <span class="text-tandoor">{{ useUserPreferenceStore().userSettings.user.displayName }}</span>
+                        <v-card-title class="text-h4">{{ $t('WelcometoTandoor') }} <span class="text-primary">{{ useUserPreferenceStore().userSettings.user.displayName }}</span>
                         </v-card-title>
                         <v-card-text v-if="space">
                             <p class="text-subtitle-1 mb-4">{{ $t('WelcomeSettingsHelp') }}</p>
@@ -25,7 +25,7 @@
                             <v-text-field v-model="space.name" :label="$t('Name')"></v-text-field>
 
                             <v-select :label="$t('Theme')" v-model="useUserPreferenceStore().userSettings.theme"
-                                      :items="[{title: 'Tandoor', value: 'TANDOOR'}, {title: 'Tandoor Dark', value: 'TANDOOR_DARK'}, ]">
+                                      :items="[{title: 'Cushina Light', value: 'TANDOOR'}, {title: 'Cushina Dark', value: 'TANDOOR_DARK'}]">
                             </v-select>
 
                             <v-text-field v-model="useUserPreferenceStore().userSettings.defaultUnit" :label="$t('Default_Unit')"></v-text-field>

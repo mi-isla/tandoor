@@ -272,12 +272,12 @@ class Space(ExportModelOperationsMixin('space'), models.Model):
 
     THEMES = (
         (BLANK, '-------'),
-        (TANDOOR, 'Tandoor'),
+        (TANDOOR, 'Cushina Light'),
         (BOOTSTRAP, 'Bootstrap'),
         (DARKLY, 'Darkly'),
         (FLATLY, 'Flatly'),
         (SUPERHERO, 'Superhero'),
-        (TANDOOR_DARK, 'Tandoor Dark (INCOMPLETE)'),
+        (TANDOOR_DARK, 'Cushina Dark'),
     )
 
     LIGHT = 'LIGHT'
@@ -486,12 +486,12 @@ class UserPreference(models.Model, PermissionModelMixin):
     TANDOOR_DARK = 'TANDOOR_DARK'
 
     THEMES = (
-        (TANDOOR, 'Tandoor'),
+        (TANDOOR, 'Cushina Light'),
         (BOOTSTRAP, 'Bootstrap'),
         (DARKLY, 'Darkly'),
         (FLATLY, 'Flatly'),
         (SUPERHERO, 'Superhero'),
-        (TANDOOR_DARK, 'Tandoor Dark (INCOMPLETE)'),
+        (TANDOOR_DARK, 'Cushina Dark'),
     )
 
     # Nav colors

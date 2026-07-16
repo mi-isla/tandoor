@@ -1,9 +1,9 @@
 <template>
     <v-app>
-        <v-app-bar color="tandoor" flat density="comfortable" v-if="!useUserPreferenceStore().isAuthenticated && !useUserPreferenceStore().isPrintMode">
+        <v-app-bar color="cushina" flat density="comfortable" v-if="!useUserPreferenceStore().isAuthenticated && !useUserPreferenceStore().isPrintMode">
 
         </v-app-bar>
-        <v-app-bar :color="useUserPreferenceStore().activeSpace.navBgColor ? useUserPreferenceStore().activeSpace.navBgColor : useUserPreferenceStore().userSettings.navBgColor"
+        <v-app-bar :color="navBarColor"
                    flat density="comfortable" v-if="useUserPreferenceStore().isAuthenticated && !useUserPreferenceStore().isPrintMode"
                    :absolute="!useUserPreferenceStore().userSettings.navSticky"
                    :scroll-behavior="useUserPreferenceStore().userSettings.navSticky ? 'elevate' : ''">
@@ -16,6 +16,7 @@
 
 
             <v-spacer></v-spacer>
+            <theme-toggle></theme-toggle>
             <global-search-dialog></global-search-dialog>
             <v-btn icon="$add" class="d-print-none">
                 <v-icon icon="$add" class="fa-fw"></v-icon>
@@ -79,7 +80,7 @@
                 <v-list nav>
                     <v-list-item prepend-icon="fas fa-sliders" :title="$t('Settings')" :to="{ name: 'SettingsPage', params: {} }"></v-list-item>
                     <v-list-item prepend-icon="fa-solid fa-heart" link>
-                        Tandoor {{ useUserPreferenceStore().serverSettings.version }}
+                        Cushina {{ useUserPreferenceStore().serverSettings.version }}
                         <help-dialog></help-dialog>
                     </v-list-item>
                 </v-list>
@@ -121,13 +122,15 @@
 
 <script lang="ts" setup>
 import GlobalSearchDialog from "@/components/inputs/GlobalSearchDialog.vue"
+import ThemeToggle from "@/components/display/ThemeToggle.vue"
 
 import {useDisplay, useLocale} from "vuetify"
 import {toVuetifyLocale} from "@/vuetify"
 import VSnackbarQueued from "@/components/display/VSnackbarQueued.vue";
 import {useUserPreferenceStore} from "@/stores/UserPreferenceStore";
 import NavigationDrawerContextMenu from "@/components/display/NavigationDrawerContextMenu.vue";
-import {nextTick, onMounted, ref} from "vue";
+import {computed, nextTick, onMounted, ref} from "vue";
+import {useTheme} from "vuetify";
 import {isSpaceAboveLimit} from "@/utils/logic_utils";
 import {useTitle} from "@vueuse/core";
 import HelpDialog from "@/components/dialogs/HelpDialog.vue";
@@ -139,6 +142,13 @@ import MenuUserInfo from "@/components/display/MenuUserInfo.vue";
 
 const {lgAndUp} = useDisplay()
 const {t} = useI18n()
+const vuetifyTheme = useTheme()
+
+const navBarColor = computed(() => {
+    const spaceColor = useUserPreferenceStore().activeSpace.navBgColor
+    const userColor = useUserPreferenceStore().userSettings.navBgColor
+    return spaceColor || userColor || vuetifyTheme.current.value.colors.cushina
+})
 
 const title = useTitle()
 const router = useRouter()
@@ -177,7 +187,7 @@ router.afterEach((to, from) => {
         if (to.meta.title) {
             title.value = t(to.meta.title)
         } else {
-            title.value = 'Tandoor'
+            title.value = 'Cushina'
         }
     })
 })
@@ -185,11 +195,21 @@ router.afterEach((to, from) => {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+.v-application {
+    font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif !important;
+    letter-spacing: -0.01em;
+}
+
+.v-card {
+    border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
 
 .v-theme--dark {
 
     a:not([class]) {
-        color: #b98766;
+        color: rgb(var(--v-theme-primary));
         text-decoration: none;
         background-color: transparent
     }
@@ -211,32 +231,32 @@ router.afterEach((to, from) => {
     /* Meal-Plan */
 
     .cv-header {
-        background-color: #303030 !important;
+        background-color: rgb(var(--v-theme-surface)) !important;
     }
 
     .cv-weeknumber, .cv-header-day {
-        background-color: #303030 !important;
-        color: #fff !important;
+        background-color: rgb(var(--v-theme-surface)) !important;
+        color: rgb(var(--v-theme-on-surface)) !important;
     }
 
     .cv-day.past {
-        background-color: #333333 !important;
+        background-color: rgb(var(--v-theme-surface-light)) !important;
     }
 
     .cv-day.today {
-        background-color: rgba(185, 135, 102, 0.2) !important;
+        background-color: rgba(var(--v-theme-primary), 0.18) !important;
     }
 
     .cv-day.outsideOfMonth {
-        background-color: #0d0d0d !important;
+        background-color: rgb(var(--v-theme-background)) !important;
     }
 
     .cv-item {
-        background-color: #4E4E4E !important;
+        background-color: rgb(var(--v-theme-surface-bright)) !important;
     }
 
     .d01 .cv-day-number {
-        background-color: #b98766 !important;
+        background-color: rgb(var(--v-theme-primary)) !important;
     }
 
     /* mavon-editor link/image dialog */
@@ -327,7 +347,7 @@ router.afterEach((to, from) => {
     }
 
     .v-note-wrapper .markdown-body a {
-        color: #b98766 !important;
+        color: rgb(var(--v-theme-primary)) !important;
     }
 
     .v-note-wrapper .markdown-body h1,
@@ -414,7 +434,7 @@ router.afterEach((to, from) => {
     }
 
     .markdown-body a {
-        color: #b98766 !important;
+        color: rgb(var(--v-theme-primary)) !important;
     }
 
     .markdown-body blockquote {
@@ -430,7 +450,7 @@ router.afterEach((to, from) => {
 
 .v-theme--light {
     a:not([class]) {
-        color: #b98766;
+        color: rgb(var(--v-theme-primary));
         text-decoration: none;
         background-color: transparent
     }
@@ -454,11 +474,11 @@ router.afterEach((to, from) => {
 /* vueform/multiselect */
 
 .multiselect-option.is-pointed {
-    background: #b98766 !important;
+    background: rgb(var(--v-theme-primary)) !important;
 }
 
 .multiselect-option.is-selected {
-    background: #b55e4f !important;
+    background: rgb(var(--v-theme-secondary)) !important;
 }
 
 </style>

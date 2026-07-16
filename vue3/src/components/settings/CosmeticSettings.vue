@@ -6,9 +6,9 @@
         <language-select></language-select>
 
         <v-label>{{$t('Nav_Color')}}</v-label>
-        <v-color-picker v-model="useUserPreferenceStore().userSettings.navBgColor" mode="hex" :modes="['hex']" show-swatches :swatches="[['#ddbf86'],['#b98766'],['#b55e4f'],['#82aa8b'],['#385f84']]"></v-color-picker>
+        <v-color-picker v-model="useUserPreferenceStore().userSettings.navBgColor" mode="hex" :modes="['hex']" show-swatches :swatches="[['#1B3D36'],['#2A6B5E'],['#0A1613'],['#D96E4C'],['#3B6EA8']]"></v-color-picker>
 
-        <v-select :label="$t('Theme')" class="mt-4" v-model="useUserPreferenceStore().userSettings.theme" :items="[{title: 'Tandoor', value: 'TANDOOR'}, {title: 'Tandoor Dark', value: 'TANDOOR_DARK'}, ]">
+        <v-select :label="$t('Theme')" class="mt-4" v-model="useUserPreferenceStore().userSettings.theme" :items="themeOptions">
         </v-select>
 
         <v-checkbox :label="$t('Show_Logo')" :hint="$t('Show_Logo_Help')" persistent-hint v-model="useUserPreferenceStore().userSettings.navShowLogo"></v-checkbox>
@@ -50,6 +50,11 @@ import {useUserPreferenceStore} from "@/stores/UserPreferenceStore";
 import LanguageSelect from "@/components/inputs/LanguageSelect.vue";
 
 const {t} = useI18n()
+
+const themeOptions = [
+    {title: 'Cushina Light', value: 'TANDOOR'},
+    {title: 'Cushina Dark', value: 'TANDOOR_DARK'},
+]
 
 const availableDefaultPages = ref([
     {page: 'SEARCH', label: t('Search')},

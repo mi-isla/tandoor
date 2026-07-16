@@ -4,36 +4,27 @@ import {aliases, fa} from 'vuetify/iconsets/fa'
 
 // Composables
 import {createVuetify} from 'vuetify'
-import {DateTime} from "luxon";
 import * as vuetifyLocales from "vuetify/locale";
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
     defaults: {
-        // disabled as this leads to cards overflowing if not careful, manually set on cards containing a multiselect until proper solution is found
-        // VCard: {
-        //     class: 'overflow-visible' // this is needed so that vue-multiselect options show above a card, vuetify uses overlay container to avoid this
-        // },
-        // without this action buttons are left aligned in normal cards but right aligned in dialogs (I think)
+        VCard: {
+            rounded: 'lg',
+            elevation: 1,
+        },
+        VBtn: {
+            rounded: 'lg',
+        },
         VCardActions: {
             class: 'float-right'
         },
-        // limiting max width of base container so UIs dont become too wide
         VContainer: {
             maxWidth: '1400px'
         },
-        // always localize the date display of DateInputs
-        // VDateInput: {
-        //     displayFormat: (date: Date) => DateTime.fromJSDate(date).toLocaleString()
-        // },
-        // always use color for switches to properly see if enabled or not
         VSwitch: {
             color: 'primary'
         },
-        // globally set the correct decimal seperator
-        // VNumberInput: {
-        //     decimalSeparator: 0.1.toLocaleString().replace(/\d/g, '')
-        // }
     },
     locale: {
         locale: 'en',
@@ -44,42 +35,57 @@ export default createVuetify({
         defaultTheme: 'light',
         themes: {
             light: {
+                dark: false,
                 colors: {
-                    background: '#f5efea',
-                    tandoor: '#ddbf86',
-                    primary: '#b98766',
-                    secondary: '#b55e4f',
-                    success: '#82aa8b',
-                    info: '#385f84',
-                    warning: '#eaaa21',
-                    error: '#a7240e',
+                    background: '#F5F7F6',
+                    surface: '#FFFFFF',
+                    'surface-bright': '#FFFFFF',
+                    'surface-light': '#EEF2F0',
+                    'surface-variant': '#E3EAE7',
+                    'on-surface-variant': '#4A5C56',
+                    cushina: '#1B3D36',
+                    tandoor: '#1B3D36',
+                    primary: '#2A6B5E',
+                    secondary: '#D96E4C',
+                    success: '#4A9B7F',
+                    info: '#3B6EA8',
+                    warning: '#D4A017',
+                    error: '#C44D3A',
 
-                    save: '#82aa8b',
-                    create: '#82aa8b',
-                    edit: '#385f84',
-                    delete: '#a7240e',
-                    cancel: '#eaaa21',
+                    save: '#4A9B7F',
+                    create: '#4A9B7F',
+                    edit: '#3B6EA8',
+                    delete: '#C44D3A',
+                    cancel: '#8A9A94',
 
-                    recipeImagePlaceholderBg: '#ffffff',
+                    recipeImagePlaceholderBg: '#EEF2F0',
                 },
             },
             dark: {
+                dark: true,
                 colors: {
-                    tandoor: '#ddbf86',
-                    primary: '#b98766',
-                    secondary: '#b55e4f',
-                    success: '#82aa8b',
-                    info: '#385f84',
-                    warning: '#eaaa21',
-                    error: '#a7240e',
+                    background: '#0D1210',
+                    surface: '#161D1A',
+                    'surface-bright': '#1E2824',
+                    'surface-light': '#1A221F',
+                    'surface-variant': '#24302B',
+                    'on-surface-variant': '#A8B8B2',
+                    cushina: '#0A1613',
+                    tandoor: '#0A1613',
+                    primary: '#5CB89E',
+                    secondary: '#E8886A',
+                    success: '#6BC4A8',
+                    info: '#6A9FD4',
+                    warning: '#E8C04A',
+                    error: '#E07060',
 
-                    save: '#82aa8b',
-                    create: '#82aa8b',
-                    edit: '#385f84',
-                    delete: '#a7240e',
-                    cancel: '#eaaa21',
+                    save: '#6BC4A8',
+                    create: '#6BC4A8',
+                    edit: '#6A9FD4',
+                    delete: '#E07060',
+                    cancel: '#7A8A84',
 
-                    recipeImagePlaceholderBg: '#212121',
+                    recipeImagePlaceholderBg: '#1E2824',
                 },
             },
         },
