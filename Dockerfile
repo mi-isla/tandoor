@@ -33,16 +33,11 @@ COPY . ./
 # Cushina: bouw de Vue3-frontend (static output staat in .gitignore).
 RUN cd vue3 && npm install -g yarn && yarn install --frozen-lockfile && yarn build
 
-RUN <<EOF
-    # delete default nginx config and link it to tandoors config
-    rm -rf /etc/nginx/http.d
-    ln -s /opt/recipes/http.d /etc/nginx/http.d
-    # allow all write/read but set sticky bit to restrict non-root to only create files (conf templating in boot.sh)
-    chmod 1777 /opt/recipes/http.d/
-    # create symlinks to access and error log to show them on stdout
-    ln -sf /dev/stdout /var/log/nginx/access.log
+RUN rm -rf /etc/nginx/http.d && \
+    ln -s /opt/recipes/http.d /etc/nginx/http.d && \
+    chmod 1777 /opt/recipes/http.d/ && \
+    ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
-EOF
 
 # commented for now https://github.com/TandoorRecipes/recipes/issues/3478
 #HEALTHCHECK --interval=30s \
