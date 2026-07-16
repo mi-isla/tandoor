@@ -1837,7 +1837,7 @@ class InviteLinkSerializer(WritableNestedModelSerializer):
                                              created_at__gte=timezone.now() - timedelta(hours=4)).count() < 20:
                     message = _('Hello') + '!\n\n' + _('You have been invited by ') + escape(
                         self.context['request'].user.get_user_display_name())
-                    message += _(' to join their Tandoor Recipes space ') + escape(
+                    message += _(' to join their Cushina space ') + escape(
                         self.context['request'].space.name) + '.\n\n'
                     message += _('Click the following link to activate your account: ') + self.context[
                         'request'].build_absolute_uri(reverse('view_invite', args=[str(obj.uuid)])) + '\n\n'
@@ -1845,10 +1845,10 @@ class InviteLinkSerializer(WritableNestedModelSerializer):
                         obj.uuid) + '\n\n'
                     message += _('The invitation is valid until ') + str(obj.valid_until) + '\n\n'
                     message += _(
-                        'Tandoor Recipes is an Open Source recipe manager. Check it out on GitHub ') + 'https://github.com/vabene1111/recipes/'
+                        'Cushina is a recipe manager built on open-source Tandoor. ') + 'https://github.com/mi-isla/tandoor'
 
                     send_mail(
-                        _('Tandoor Recipes Invite'),
+                        _('Cushina Invite'),
                         message,
                         None,
                         [obj.email],

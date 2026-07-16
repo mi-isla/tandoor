@@ -520,7 +520,7 @@ class UserPreference(models.Model, PermissionModelMixin):
     image = models.ForeignKey("UserFile", on_delete=models.SET_NULL, null=True, blank=True, related_name='user_image')
 
     theme = models.CharField(choices=THEMES, max_length=128, default=TANDOOR)
-    nav_bg_color = models.CharField(max_length=8, default='#ddbf86')
+    nav_bg_color = models.CharField(max_length=8, default='#1B3D36')
     nav_text_color = models.CharField(max_length=16, choices=NAV_TEXT_COLORS, default=DARK)
     nav_show_logo = models.BooleanField(default=True)
     nav_sticky = models.BooleanField(default=STICKY_NAV_PREF_DEFAULT)

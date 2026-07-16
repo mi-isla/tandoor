@@ -5,7 +5,7 @@
 - [x] Modern kleurenpalet (sage + coral) met **light** en **dark** mode
 - [x] Thema-toggle in de navigatiebalk
 - [ ] PWA-icon PNG's regenereren vanuit `logo_color.svg`
-- [ ] Legacy Bootstrap-thema's (`tandoor.min.css`) alignen als die pagina's nog gebruikt worden
+- [x] Legacy Bootstrap-thema's (`cushina.min.css`) + Django login/templates
 
 ## Alma-integratie
 - [ ] Koppeling met Alma-assistant voor receptbeheer

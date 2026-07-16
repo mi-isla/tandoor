@@ -25,8 +25,8 @@ def get_theming_values(request):
             space = Space.objects.filter(id=FORCE_THEME_FROM_SPACE).first()
 
     themes = {
-        UserPreference.TANDOOR: 'themes/tandoor.min.css',
-        UserPreference.TANDOOR_DARK: 'themes/tandoor_dark.min.css',
+        UserPreference.TANDOOR: 'themes/cushina.min.css',
+        UserPreference.TANDOOR_DARK: 'themes/cushina_dark.min.css',
     }
     nav_text_type_mapping = {Space.DARK: 'navbar-light',
                              Space.LIGHT: 'navbar-dark'}  # inverted since navbar-dark means the background
@@ -41,7 +41,7 @@ def get_theming_values(request):
         'logo_color_svg': static('assets/logo_color_svg.svg'),
         'custom_theme': None,
         'theme': static(themes[UserPreference.TANDOOR]),
-        'nav_logo': static('assets/brand_logo.png'),
+        'nav_logo': static('assets/brand_logo.svg'),
         'nav_bg_color': '#1B3D36',
         'nav_text_class': 'navbar-light',
         'sticky_nav': 'position: sticky; top: 0; left: 0; z-index: 1000;',

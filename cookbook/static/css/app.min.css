@@ -1,5 +1,7 @@
 .brand-icon {
     height: 40px;
+    width: auto;
+    max-width: 180px;
 }
 
 .two-row-text {

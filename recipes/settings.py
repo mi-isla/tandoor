@@ -408,8 +408,8 @@ REST_FRAMEWORK = {
 ##################################################################
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Tandoor',
-    'DESCRIPTION': 'Tandoor API Docs',
+    'TITLE': 'Cushina',
+    'DESCRIPTION': 'Cushina API Docs',
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': False,
     'ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE': False,
@@ -433,7 +433,7 @@ SPECTACULAR_SETTINGS = {
         "x-logo": {
             "url": f"{STATIC_URL}assets/brand_logo.svg",
             "backgroundColor": "#FFFFFF",
-            "altText": "Tandoor logo",
+            "altText": "Cushina logo",
             'href': '/'
         }
     },
@@ -700,7 +700,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = extract_bool('EMAIL_USE_TLS', False)
 EMAIL_USE_SSL = extract_bool('EMAIL_USE_SSL', False)
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
-ACCOUNT_EMAIL_SUBJECT_PREFIX = os.getenv('ACCOUNT_EMAIL_SUBJECT_PREFIX', '[Tandoor Recipes] ')  # allauth sender prefix
+ACCOUNT_EMAIL_SUBJECT_PREFIX = os.getenv('ACCOUNT_EMAIL_SUBJECT_PREFIX', '[Cushina] ')  # allauth sender prefix
 
 # ACCOUNT_SIGNUP_FORM_CLASS = 'cookbook.forms.AllAuthSignupForm'
 ACCOUNT_FORMS = {'signup': 'cookbook.forms.AllAuthSignupForm', 'reset_password': 'cookbook.forms.CustomPasswordResetForm'}

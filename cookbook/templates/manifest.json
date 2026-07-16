@@ -1,7 +1,7 @@
 {
-  "name": "Tandoor Recipes",
-  "short_name": "Tandoor",
-  "description": "Application to manage, tag and search recipes.",
+  "name": "Cushina",
+  "short_name": "Cushina",
+  "description": "Manage recipes, shopping lists, meal plans and more.",
   "icons": [
     {
       "src": "/static/assets/logo_color144.png",
@@ -15,10 +15,10 @@
     }
   ],
   "start_url": "./search",
-  "background_color": "#ffcb76",
+  "background_color": "#1B3D36",
   "display": "standalone",
   "scope": ".",
-  "theme_color": "#ffcb76",
+  "theme_color": "#1B3D36",
   "shortcuts": [
     {
       "name": "Plan",

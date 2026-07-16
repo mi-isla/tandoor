@@ -3415,7 +3415,7 @@ def share_link(request, pk):
 
 def meal_plans_to_ical(queryset, filename):
     cal = Calendar()
-    cal.add('prodid', f'-//Tandoor Recipes//')
+    cal.add('prodid', f'-//Cushina//')
     cal.add('version', TANDOOR_VERSION)
 
     for p in queryset:
