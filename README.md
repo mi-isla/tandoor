@@ -113,3 +113,13 @@ likely be released in the future (including all features needed to sell a hosted
 This will not only benefit me personally but also everyone who self-hosts this software as any profits made through selling the hosted option
 allow me to spend more time developing and improving the software for everyone. Selling exceptions are [approved by Richard Stallman](http://www.gnu.org/philosophy/selling-exceptions.en.html) and the
 common clause license is very permissive (see the [FAQ](https://commonsclause.com/)).
+
+---
+
+## Mi Isla fork
+
+Deze repository is een **Mi Isla-fork** van [TandoorRecipes/recipes](https://github.com/TandoorRecipes/recipes), bedoeld voor eigen customization.
+
+- **Eigenaar:** Shaun (Mi Isla)
+- **Doel:** Aanpassingen voor thema/branding, Alma-integratie en Nederlandse defaults
+- **Sync met upstream:** `git fetch upstream` en merge/rebase naar de eigen branch
