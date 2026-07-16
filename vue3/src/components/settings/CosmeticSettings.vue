@@ -11,6 +11,15 @@
         <v-select :label="$t('Theme')" class="mt-4" v-model="useUserPreferenceStore().userSettings.theme" :items="themeOptions">
         </v-select>
 
+        <v-select
+            :label="$t('UnitDisplayMode')"
+            class="mt-4"
+            v-model="useUserPreferenceStore().deviceSettings.unit_display_mode"
+            :items="unitDisplayOptions"
+            :hint="$t('UnitDisplayModeHelp')"
+            persistent-hint
+        ></v-select>
+
         <v-checkbox :label="$t('Show_Logo')" :hint="$t('Show_Logo_Help')" persistent-hint v-model="useUserPreferenceStore().userSettings.navShowLogo"></v-checkbox>
         <v-checkbox :label="$t('Sticky_Nav')" :hint="$t('Sticky_Nav_Help')" persistent-hint v-model="useUserPreferenceStore().userSettings.navSticky"></v-checkbox>
 
@@ -54,6 +63,13 @@ const {t} = useI18n()
 const themeOptions = [
     {title: 'Cushina Light', value: 'TANDOOR'},
     {title: 'Cushina Dark', value: 'TANDOOR_DARK'},
+]
+
+const unitDisplayOptions = [
+    {title: t('UnitDisplayBoth'), value: 'both'},
+    {title: t('UnitDisplayMetric'), value: 'metric'},
+    {title: t('UnitDisplayUS'), value: 'us'},
+    {title: t('UnitDisplayOriginal'), value: 'original'},
 ]
 
 const availableDefaultPages = ref([

@@ -1,4 +1,5 @@
 import {ShoppingList, Supermarket} from "@/openapi";
+import type {UnitDisplayMode} from "@/utils/unit_utils";
 
 export type DeviceSettings = {
     shopping_show_checked_entries: boolean
@@ -28,4 +29,7 @@ export type DeviceSettings = {
 
     general_tableItemsPerPage: number
     general_closedHelpAlerts: String[]
+
+    /** original | metric | us | both (default: show US + metric side by side) */
+    unit_display_mode: UnitDisplayMode
 }

@@ -250,6 +250,8 @@ export const useUserPreferenceStore = defineStore('user_preference_store', () =>
 
             general_tableItemsPerPage: 10,
             general_closedHelpAlerts: [],
+
+            unit_display_mode: 'both',
         }
     }
 

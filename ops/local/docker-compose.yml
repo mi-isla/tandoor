@@ -1,0 +1,33 @@
+# Cushina lokaal draaien (Mi Isla fork) — bouwt vanuit repo-root.
+# Gebruik: cd ops/local && docker compose up --build -d
+
+services:
+  db_recipes:
+    restart: unless-stopped
+    image: postgres:16-alpine
+    volumes:
+      - cushina_pg:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: djangodb
+      POSTGRES_USER: djangouser
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  web_recipes:
+    restart: unless-stopped
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${CUSHINA_PORT:-8085}:80"
+    volumes:
+      - cushina_static:/opt/recipes/staticfiles
+      - cushina_media:/opt/recipes/mediafiles
+    depends_on:
+      - db_recipes
+
+volumes:
+  cushina_pg:
+  cushina_static:
+  cushina_media:

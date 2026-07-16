@@ -45,7 +45,12 @@
                     <td style="width: 1%; text-wrap: nowrap" class="pr-1" v-else></td>
 
                     <td style="width: 1%; text-wrap: nowrap" class="pr-1">
-                        <template v-if="i.unit && !i.noAmount && i.amount != 0"> {{ ingredientToUnitString(i, ingredientFactor) }}</template>
+                        <template v-if="i.unit && !i.noAmount && i.amount != 0">
+                            <div>{{ ingredientToUnitString(i, ingredientFactor) }}</div>
+                            <div v-if="alternateDisplay(i)" class="text-caption text-medium-emphasis">
+                                {{ alternateDisplay(i)!.label }} {{ alternateDisplay(i)!.amountHtml }} {{ alternateDisplay(i)!.unit }}
+                            </div>
+                        </template>
                     </td>
                     <td>
                         <template v-if="i.food">
@@ -104,6 +109,7 @@ import {computed, ref} from "vue";
 import {calculateFoodAmount} from "../../utils/number_utils";
 import {useUserPreferenceStore} from "../../stores/UserPreferenceStore";
 import {ingredientToFoodString, ingredientToUnitString} from "@/utils/model_utils.ts";
+import {getAlternateIngredientDisplay} from "@/utils/unit_utils.ts";
 import {TFood, TUnit} from "@/types/Models.ts";
 import NumberScalerDialog from "@/components/inputs/NumberScalerDialog.vue";
 import {ErrorMessageType, PreparedMessage, useMessageStore} from "@/stores/MessageStore.ts";
@@ -151,6 +157,15 @@ const tableHeaders = computed(() => {
 
 function handleRowClick(event: PointerEvent, data: any) {
     ingredients.value[data.index].checked = !ingredients.value[data.index].checked
+}
+
+function alternateDisplay(ingredient: Ingredient) {
+    return getAlternateIngredientDisplay(
+        ingredient,
+        useUserPreferenceStore().deviceSettings.unit_display_mode,
+        props.ingredientFactor,
+        useUserPreferenceStore().userSettings.useFractions ?? false,
+    )
 }
 
 function addToShopping(ingredient: Ingredient) {
