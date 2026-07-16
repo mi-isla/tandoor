@@ -30,6 +30,9 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev zlib-de
 #Copy project and execute it.
 COPY . ./
 
+# Cushina: bouw de Vue3-frontend (static output staat in .gitignore).
+RUN cd vue3 && npm install -g yarn && yarn install --frozen-lockfile && yarn build
+
 RUN <<EOF
     # delete default nginx config and link it to tandoors config
     rm -rf /etc/nginx/http.d
